@@ -11,7 +11,7 @@ const DatePreview: React.FC = () => {
       <Calendar
         mode="multiple"
         selected={previewDates}
-        className="rounded-md border"
+        className="rounded-md border flex justify-center"
       />
       <div className="space-y-2">
         <h4 className="text-sm font-medium">Upcoming Dates:</h4>

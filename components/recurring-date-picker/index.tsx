@@ -19,7 +19,7 @@ const RecurringDatePicker: React.FC = () => {
               mode="single"
               selected={startDate}
               onSelect={date => date && setStartDate(date)}
-              className="rounded-md border"
+              className="rounded-md border flex justify-center"
             />
           </div>
 
@@ -29,7 +29,7 @@ const RecurringDatePicker: React.FC = () => {
               mode="single"
               selected={endDate || undefined}
               onSelect={setEndDate}
-              className="rounded-md border"
+              className="rounded-md border flex justify-center"
             />
           </div>
         </div>
