@@ -60,7 +60,9 @@ const RecurrenceOptions: React.FC = () => {
           }}
           className="w-16 px-2 py-1 border rounded"
         />
-        <span className="text-sm">{recurrenceType.slice(0, -2)}(s)</span>
+        <span className="text-sm">
+          {recurrenceType === 'daily' ? 'day' : recurrenceType.slice(0, -2)}(s)
+        </span>
       </div>
     </div>
   );

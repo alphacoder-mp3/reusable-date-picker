@@ -3,7 +3,7 @@
 import { Calendar } from '@/components/ui/calendar';
 import { useRecurringDateStore } from '@/components/recurring-date-picker/store';
 import RecurrenceOptions from '@/components/recurring-date-picker/recurrence-options';
-import DatePreview from '@/components/recurring-date-picker';
+import DatePreview from '@/components/recurring-date-picker/date-preview';
 
 const RecurringDatePicker: React.FC = () => {
   const { startDate, endDate, setStartDate, setEndDate } =
