@@ -11,7 +11,7 @@ interface RecurringDateState {
   selectedDays: number[];
   previewDates: Date[];
   setStartDate: (date: Date) => void;
-  setEndDate: (date: Date | null) => void;
+  setEndDate: (date: Date | undefined | null) => void;
   setRecurrenceType: (type: RecurrenceType) => void;
   setInterval: (interval: number) => void;
   setSelectedDays: (days: number[]) => void;
@@ -26,27 +26,27 @@ export const useRecurringDateStore = create<RecurringDateState>((set, get) => ({
   selectedDays: [],
   previewDates: [],
 
-  setStartDate: (date) => {
+  setStartDate: date => {
     set({ startDate: startOfDay(date) });
     get().updatePreviewDates();
   },
 
-  setEndDate: (date) => {
+  setEndDate: date => {
     set({ endDate: date ? startOfDay(date) : null });
     get().updatePreviewDates();
   },
 
-  setRecurrenceType: (type) => {
+  setRecurrenceType: type => {
     set({ recurrenceType: type });
     get().updatePreviewDates();
   },
 
-  setInterval: (interval) => {
+  setInterval: interval => {
     set({ interval: interval });
     get().updatePreviewDates();
   },
 
-  setSelectedDays: (days) => {
+  setSelectedDays: days => {
     set({ selectedDays: days });
     get().updatePreviewDates();
   },
@@ -57,7 +57,10 @@ export const useRecurringDateStore = create<RecurringDateState>((set, get) => ({
     let currentDate = startDate;
     const maxPreviewDates = 10;
 
-    while (dates.length < maxPreviewDates && (!endDate || currentDate <= endDate)) {
+    while (
+      dates.length < maxPreviewDates &&
+      (!endDate || currentDate <= endDate)
+    ) {
       dates.push(currentDate);
 
       switch (recurrenceType) {

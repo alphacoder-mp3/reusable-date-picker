@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { Calendar } from '@/components/ui/calendar';
 import { useRecurringDateStore } from '@/components/recurring-date-picker/store';
@@ -6,7 +6,8 @@ import RecurrenceOptions from '@/components/recurring-date-picker/recurrence-opt
 import DatePreview from '@/components/recurring-date-picker';
 
 const RecurringDatePicker: React.FC = () => {
-  const { startDate, endDate, setStartDate, setEndDate } = useRecurringDateStore();
+  const { startDate, endDate, setStartDate, setEndDate } =
+    useRecurringDateStore();
 
   return (
     <div className="p-4 space-y-6 max-w-2xl mx-auto">
@@ -17,11 +18,11 @@ const RecurringDatePicker: React.FC = () => {
             <Calendar
               mode="single"
               selected={startDate}
-              onSelect={(date) => date && setStartDate(date)}
+              onSelect={date => date && setStartDate(date)}
               className="rounded-md border"
             />
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-2">End Date (Optional)</h3>
             <Calendar
@@ -38,7 +39,7 @@ const RecurringDatePicker: React.FC = () => {
             <h3 className="text-lg font-semibold mb-2">Recurrence Pattern</h3>
             <RecurrenceOptions />
           </div>
-          
+
           <DatePreview />
         </div>
       </div>

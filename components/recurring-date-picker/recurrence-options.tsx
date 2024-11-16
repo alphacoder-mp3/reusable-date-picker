@@ -1,17 +1,21 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { useRecurringDateStore, RecurrenceType } from '@/components/recurring-date-picker/store';
+import {
+  useRecurringDateStore,
+  RecurrenceType,
+} from '@/components/recurring-date-picker/store';
 
 const RecurrenceOptions: React.FC = () => {
-  const { recurrenceType, setRecurrenceType, interval, setInterval } = useRecurringDateStore();
-  const [inputValue, setInputValue] = React.useState(interval.toString());
+  const { recurrenceType, setRecurrenceType, interval, setInterval } =
+    useRecurringDateStore();
+  const [inputValue, setInputValue] = useState(interval.toString());
 
   const options: RecurrenceType[] = ['daily', 'weekly', 'monthly', 'yearly'];
 
   const handleIntervalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setInputValue(newValue);
-    
+
     const parsedValue = parseInt(newValue, 10);
     if (!isNaN(parsedValue) && parsedValue >= 1) {
       setInterval(parsedValue);
@@ -21,14 +25,14 @@ const RecurrenceOptions: React.FC = () => {
   };
 
   // Update input value when interval changes externally
-  React.useEffect(() => {
+  useEffect(() => {
     setInputValue(interval.toString());
   }, [interval]);
 
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        {options.map((option) => (
+        {options.map(option => (
           <Button
             key={option}
             variant={recurrenceType === option ? 'default' : 'outline'}
@@ -39,7 +43,7 @@ const RecurrenceOptions: React.FC = () => {
           </Button>
         ))}
       </div>
-      
+
       <div className="flex items-center gap-2">
         <label className="text-sm">Every</label>
         <input

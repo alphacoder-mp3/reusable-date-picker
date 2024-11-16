@@ -1,4 +1,3 @@
-import React from 'react';
 import { format } from 'date-fns';
 import { useRecurringDateStore } from '@/components/recurring-date-picker/store';
 import { Calendar } from '@/components/ui/calendar';
